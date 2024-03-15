@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header">
+        <h1 class="display-3 text-uppercase text-white mb-3">Malumot</h1>
+        <div class="d-inline-flex text-white">
+            <h6 class="text-uppercase m-0"><a href="">Bosh sahifa</a></h6>
+            <h6 class="text-white m-0 px-3">/</h6>
+            <h6 class="text-uppercase text-white m-0">Malumot</h6>
+        </div>
+    </div>
+    <!-- Page Header Start -->
+
+    <!-- About Start -->
+    <div class="container-fluid py-6 px-5">
+        <div class="row g-5">
+            {% for about in abouts %}
+            <div class="col-lg-7">
+                <h1 class="display-5 text-uppercase mb-4">Biz <span class="text-primary">Haqimizda</span> Bilib oling</h1>
+                <h4 class="text-uppercase mb-3 text-body">{{about.title}}</h4>
+                <p>{{about.subtitle}}</p>
+                <div class="row gx-5 py-2">
+                    <div class="col-sm-6 mb-2">
+                        {% for i in about.body %}
+                        <p class="fw-bold mb-2"><i class="fa fa-check text-primary me-3"></i>{{i}}</p>
+                        {% endfor %}
+                    </div>
+                  
+                </div>
+                   <img src="{% static  'img/signature.jpg' %}" alt="">
+            </div>
+            <div class="col-lg-5 pb-5" style="min-height: 400px;">
+                <div class="position-relative bg-dark-radial h-100 ms-5">
+                    <img class="position-absolute w-100 h-100 mt-5 ms-n5" src="{{about.image.url}}" style="object-fit: cover;">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- About End -->
+    
+
+    <!-- Team Start -->
+    <div class="container-fluid py-6 px-5">
+        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+            <h1 class="display-5 text-uppercase mb-4">Bizning<span class="text-primary"> Expert</span> va ishchilar</h1>
+        </div>
+        <div class="row g-5">
+            {% for worker in workers %}
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <div class="row g-0">
+                    <div class="col-10" style="min-height: 300px;">
+                        <div class="position-relative h-100">
+                            <img class="position-absolute w-100 h-100" src="{{worker.image.url}}" style="object-fit: cover;">
+                        </div>
+                    </div>
+                    <div class="col-2">
+
+                    </div>
+                    <div class="col-12">
+                        <div class="bg-light p-4">
+                            <h4 class="text-uppercase">{{worker.name}}</h4>
+                            <span>{{worker.job}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    <!-- Team End -->
+
+
+
+
+{% endblock %}

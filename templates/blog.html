@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header">
+        <h1 class="display-3 text-uppercase text-white mb-3">Blog</h1>
+        <div class="d-inline-flex text-white">
+            <h6 class="text-uppercase m-0"><a href="">Bosh sahifa</a></h6>
+            <h6 class="text-white m-0 px-3">/</h6>
+            <h6 class="text-uppercase text-white m-0">Blog</h6>
+        </div>
+    </div>
+    <!-- Page Header Start -->
+
+
+ 
+    <!-- Blog Start -->
+    <div class="container-fluid py-6 px-5">
+        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+            <h1 class="display-5 text-uppercase mb-4">BLOGIMIZDagi <span class="text-primary">So'ngi</span> Maqolalar</h1>
+        </div>
+        <div class="row g-5">
+           {% for blog in blogs %}
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="bg-light">
+                    <img class="img-fluid" style="width: 940px;" src="{{blog.image.url}}" alt="">
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between mb-4">
+                            <div class="d-flex align-items-center">
+                                <img class="rounded-circle me-2" src="{{blog.avatar.url}}" width="35" height="35" alt="">
+                                <span>{{blog.author}}</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="ms-3"><i class="far fa-calendar-alt text-primary me-2"></i>{{blog.date}}</span>
+                            </div>
+                        </div>
+                        <h4 class="text-uppercase mb-3">{{blog.body}}</h4>
+                        <a class="text-uppercase fw-bold" href="">Read More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Blog End -->
+
+        <!-- Contact Start -->
+        <div class="container-fluid py-6 px-5">
+            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+                <h1 class="display-5 text-uppercase mb-4">Bizga <span class="text-primary">murojat</span> Qoldirin </h1>
+            </div>
+            <div class="row align-items-center">
+                <!-- <div class="col-lg-6 mb-5 mb-lg-0" style="height: 600px;">
+                    <iframe class="w-100 h-100"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
+                        frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div> -->
+                <div class="col-2"></div>
+                <div class="col-8" style="display: flex; justify-content: center;" >
+                    <div class="contact-form bg-light p-5">
+                        <form action="{% url 'contact' %}" method="post">
+                            {% csrf_token %}
+                            <div class="row g-3">
+                                <div class="col-12 col-sm-6">
+                                    <input name="ful_name" type="text" class="form-control border-0" placeholder="Ism Familyangiz" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input name="tel" type="text" class="form-control border-0" placeholder="Telefon" style="height: 55px;">
+                                </div>
+                                <div class="col-12 ">
+                                    <input name="email" type="email" class="form-control border-0" placeholder="Email" style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="message" class="form-control border-0" rows="4" placeholder="Xabar"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact End -->
+        
+    
+{% endblock %}
